@@ -10,7 +10,7 @@
             <h3>Alunos</h3>
         </div>
         <div class="p-2 page-button">
-            <button class="btn btn-outline-standard">Novo aluno</button>
+            <a href="{{ route('alunos.create') }}" class="btn btn-outline-standard">Novo aluno</a>
         </div>
     </div>
 </div>

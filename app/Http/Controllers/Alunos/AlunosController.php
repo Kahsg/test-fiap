@@ -18,4 +18,9 @@ class AlunosController extends Controller
       'alunos' => $alunos,
     ]);
   }
+
+  public function create()
+  {
+    return view('alunos.create', []);
+  }
 }

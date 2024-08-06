@@ -8,4 +8,5 @@ Route::get('/', function () {
 })->name('home');
 Route::prefix('alunos')->name('alunos')->group(function () {
     Route::get('/', [AlunosController::class, 'index'])->name('.index');
+    Route::get('/new', [AlunosController::class, 'create'])->name('.create');
 });
