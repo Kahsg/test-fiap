@@ -12,7 +12,7 @@ class AlunosController extends Controller
   public function index(Request $request)
   {
     $alunos = Aluno::orderBy('nome')
-      ->get();
+      ->paginate(5);
 
     return view('alunos.index', [
       'alunos' => $alunos,
