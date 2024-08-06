@@ -6,11 +6,11 @@
 @section('content')
 <div class="row m-4">
     <div class="d-flex justify-content-between">
-        <div class="p-2">
+        <div class="p-2 page-title">
             <h3>Alunos</h3>
         </div>
-        <div class="p-2">
-            <button class="btn btn-outline-standard">Teste</button>
+        <div class="p-2 page-button">
+            <button class="btn btn-outline-standard">Novo aluno</button>
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
             <div class="row" id="without-data">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body pb-0">
                             <div class="text-center">
                                 <i class="fas fa-times-circle fa-2x text-danger"></i>
                                 <div class="h5 mb-0 mt-2">Sem dados para apresentar.</div>

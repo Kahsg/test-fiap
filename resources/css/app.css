@@ -82,6 +82,20 @@ li {
     box-shadow: 0 0 0 0.15rem #ed145b;
 }
 
+/* Page-title */
+.page-title {
+    position: relative;
+    display: block;
+    margin-left: 6rem;
+}
+
+/* Page-button */
+.page-button {
+    position: relative;
+    display: block;
+    margin-right: 6rem;
+}
+
 /* Page-link */
 .page-link {
     position: relative;
