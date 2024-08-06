@@ -26,6 +26,10 @@
     color: white;
 }
 
+a {
+    color: #ed145b;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -35,4 +39,98 @@ ul {
 li {
     width: 60px;
     color: rgba(0, 0, 158)
+}
+
+.list-label {
+    font-size: 12px;
+    color: #ed145b
+}
+
+.btn-outline-standard {
+    color: #ed145b;
+    border-color: #ed145b;
+}
+
+.btn-outline-standard:hover {
+    color: #fff;
+    background-color: #ed145b;
+    border-color: #ed145b;
+}
+
+.btn-outline-standard:focus,
+.btn-outline-standard.focus {
+    box-shadow: 0 0 0 0.15rem rgba(0, 174, 172, 0.5);
+}
+
+.btn-outline-standard.disabled,
+.btn-outline-standard:disabled {
+    color: #ed145b;
+    background-color: transparent;
+}
+
+.btn-outline-standard:not(:disabled):not(.disabled):active,
+.btn-outline-standard:not(:disabled):not(.disabled).active,
+.show>.btn-outline-standard.dropdown-toggle {
+    color: #fff;
+    background-color: #ed145b;
+    border-color: #ed145b;
+}
+
+.btn-outline-standard:not(:disabled):not(.disabled):active:focus,
+.btn-outline-standard:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-standard.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.15rem #ed145b;
+}
+
+/* Page-link */
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #74788d;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #ed145b;
+    text-decoration: none;
+    background-color: #eff2f7;
+    border-color: #ced4da;
+}
+
+.page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem rgba(0, 174, 172, 0.25);
+}
+
+/* Page-item */
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #ed145b;
+    border-color: #ed145b;
+}
+
+.page-item.disabled .page-link {
+    color: #ced4da;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #ced4da;
 }
