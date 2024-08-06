@@ -46,6 +46,10 @@ li {
     color: #ed145b
 }
 
+.text-standard {
+    color: #ed145b;
+}
+
 .btn-outline-standard {
     color: #ed145b;
     border-color: #ed145b;
@@ -147,4 +151,16 @@ li {
     cursor: auto;
     background-color: #fff;
     border-color: #ced4da;
+}
+
+/** LOADING **/
+.standard-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 9999;
 }

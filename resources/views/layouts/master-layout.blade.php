@@ -16,6 +16,14 @@
 
     @include('layouts.topnav')
 
+    <div id="loading" style="display: none">
+        <div class="d-flex justify-content-center standard-loading text-standard">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+
     @yield('content')
 
     @include('layouts.vendor-scripts')
