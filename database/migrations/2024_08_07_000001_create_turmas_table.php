@@ -17,7 +17,7 @@ return new class extends Migration
                 ->unique();
             $table->string('nome')
                 ->comment('Nome da turma');
-            $table->text('descrição')
+            $table->text('descricao')
                 ->comment('Descrição da turma');
             $table->unsignedBigInteger('tipo')
                 ->comment('Id do tipo de turma')
