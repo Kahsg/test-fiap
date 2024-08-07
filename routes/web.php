@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Alunos\AlunosController;
+use App\Http\Controllers\Matriculas\MatriculasController;
 use App\Http\Controllers\Turmas\TurmasController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,10 @@ Route::prefix('turmas')->name('turmas')->group(function () {
     Route::get('/{uuid}', [TurmasController::class, 'edit'])->name('.edit');
     Route::post('/{uuid}', [TurmasController::class, 'update'])->name('.update');
     Route::delete('/{uuid}', [TurmasController::class, 'delete'])->name('.delete');
+});
+Route::prefix('matriculas')->name('matriculas')->group(function () {
+    Route::get('/', [MatriculasController::class, 'index'])->name('.index');
+    Route::get('/new', [MatriculasController::class, 'create'])->name('.create');
+    Route::post('/new', [MatriculasController::class, 'store'])->name('.store');
+    Route::get('/{uuid}', [MatriculasController::class, 'view'])->name('.view');
 });
