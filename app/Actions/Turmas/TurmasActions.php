@@ -35,4 +35,30 @@ class TurmasActions
 
         return true;
     }
+
+    public function update($input, $uuid)
+    {
+        try {
+            DB::beginTransaction();
+
+            $turma = Turma::where('uuid', $uuid)
+                ->firstOrFail();
+
+            //Obtém id do tipo
+            $turmaTipo = TurmaTipo::where('uuid', $input['tipo'])
+                ->first();
+
+            $input['tipo'] = $turmaTipo->id;
+
+            $turma->update($input);
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            throw new Exception('Erro ao editar turma.' . $th, 422);
+        }
+
+        return true;
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Turmas;
 use App\Actions\Turmas\TurmasActions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Turmas\TurmasStoreRequest;
+use App\Http\Requests\Turmas\TurmasUpdateRequest;
 use App\Models\Turma;
 use App\Models\TurmaTipo;
 
@@ -55,9 +56,13 @@ class TurmasController extends Controller
     ]);
   }
 
-  public function update()
+  public function update(TurmasUpdateRequest $request, TurmasActions $action, $uuid)
   {
-    //
+    $validated = $request->validated();
+
+    $action->update($validated, $uuid);
+
+    return redirect()->route('turmas.index')->with('message', 'Cadastro atualizado com sucesso!');
   }
 
   public function delete()
