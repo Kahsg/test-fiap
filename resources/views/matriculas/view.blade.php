@@ -10,6 +10,9 @@
             <h3>Matrículas</h3>
             <h6>{{$matriculados[0]->turma->nome . ' - ' . $matriculados[0]->turma->turma_tipo->descricao}}</h6>
         </div>
+        <div class="p-2 page-button">
+            <a href="{{ route('matriculas.index')}}" type="button" class="btn btn-outline-standard"><i class="fas fa-angles-left"></i> Voltar</a>
+        </div>
     </div>
 </div>
 <div class="row m-3 d-flex justify-content-center">
