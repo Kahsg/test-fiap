@@ -31,6 +31,6 @@ class Matricula extends Model
 
     public function aluno()
     {
-        return $this->hasOne(Turma::class, 'id', 'aluno_id');
+        return $this->hasOne(Aluno::class, 'id', 'aluno_id');
     }
 }
