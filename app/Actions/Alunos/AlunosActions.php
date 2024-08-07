@@ -42,7 +42,7 @@ class AlunosActions
         } catch (\Throwable $th) {
             DB::rollBack();
 
-            throw new Exception('Erro ao criar aluno.' . $th, 422);
+            throw new Exception('Erro ao editar aluno.' . $th, 422);
         }
 
         return true;
