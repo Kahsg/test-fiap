@@ -50,6 +50,10 @@ li {
     color: #ed145b;
 }
 
+.text-lowercase {
+    text-transform: lowercase
+}
+
 .btn-outline-standard {
     color: #ed145b;
     border-color: #ed145b;
