@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="p-2">
                                     <label class="list-label">Tipo:</label>
-                                    <h6>{{ $turma->tipo->description }}</h6>
+                                    <h6>{{ $turma->turma_tipo->descricao }}</h6>
                                 </div>
                                 <div class="p-2">
                                     <label class="list-label">Descrição:</label>
