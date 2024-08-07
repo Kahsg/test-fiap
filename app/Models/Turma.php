@@ -25,7 +25,7 @@ class Turma extends Model
         'tipo',
     ];
 
-    public function tipo()
+    public function turma_tipo()
     {
         return $this->hasOne(TurmaTipo::class, 'id', 'tipo');
     }
