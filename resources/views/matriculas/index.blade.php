@@ -50,7 +50,7 @@
                                     <h6>{{ $matricula->total }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="javascript:void(0);" data-url="{{ route('matriculas.view', ['uuid' => $aluno->uuid ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
+                                    <a href="javascript:void(0);" data-url="{{ route('matriculas.view', ['uuid' => $matricula->uuid ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>
