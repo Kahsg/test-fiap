@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Turmas;
 
 use App\Http\Controllers\Controller;
 use App\Models\Turma;
+use App\Models\TurmaTipo;
 
 class TurmasController extends Controller
 {
@@ -20,7 +21,12 @@ class TurmasController extends Controller
 
   public function create()
   {
-    //
+    $tipos = TurmaTipo::orderBy('descricao')
+      ->get();
+
+    return view('turmas.create', [
+      'tipos' => $tipos,
+    ]);
   }
 
   public function store()
