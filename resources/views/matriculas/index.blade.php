@@ -50,7 +50,7 @@
                                     <h6 class="text-center">{{ count($matricula) }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="javascript:void(0);" data-url="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>
