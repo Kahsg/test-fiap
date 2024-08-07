@@ -61,4 +61,24 @@ class TurmasActions
 
         return true;
     }
+
+    public function delete($uuid)
+    {
+        try {
+            DB::beginTransaction();
+
+            $turma = Turma::where('uuid', $uuid)
+                ->firstOrFail();
+
+            $turma->delete();
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            throw new Exception('Erro ao excluir turma.' . $th, 422);
+        }
+
+        return true;
+    }
 }

@@ -36,6 +36,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <form id="form-delete" action="#" method="POST" style="display: none">
+                                @csrf
+                                @method('delete')
+                            </form>
                             <div class="d-flex justify-content-between">
                                 <div class="p-2">
                                     <label class="list-label" for="">Nome:</label>

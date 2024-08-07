@@ -65,8 +65,10 @@ class TurmasController extends Controller
     return redirect()->route('turmas.index')->with('message', 'Cadastro atualizado com sucesso!');
   }
 
-  public function delete()
+  public function delete(TurmasActions $action, $uuid)
   {
-    //
+    $action->delete($uuid);
+
+    return redirect()->route('turmas.index')->with('message', 'Turma excluída com sucesso!');
   }
 }
