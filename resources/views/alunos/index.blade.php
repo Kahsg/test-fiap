@@ -57,7 +57,7 @@
                                     </h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="#"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('alunos.edit', ['uuid' => $aluno->uuid ]) }}"><i class="fas fa-edit"></i></a>
                                 </div>
                             </div>
                         </div>

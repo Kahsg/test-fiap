@@ -27,4 +27,24 @@ class AlunosActions
 
         return true;
     }
+
+    public function update($input, $uuid)
+    {
+        try {
+            DB::beginTransaction();
+
+            $aluno = Aluno::where('uuid', $uuid)
+                ->firstOrFail();
+
+            $aluno->update($input);
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            throw new Exception('Erro ao criar aluno.' . $th, 422);
+        }
+
+        return true;
+    }
 }
