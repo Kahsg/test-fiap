@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Matriculas;
 
+use App\Actions\Matriculas\MatriculasActions;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Matriculas\MatriculasStoreRequest;
 use App\Models\Aluno;
 use App\Models\Matricula;
 use App\Models\Turma;
@@ -12,9 +14,18 @@ class MatriculasController extends Controller
 
   public function index()
   {
-    $matriculas = Matricula::with(['aluno', 'turma.turma_tipo'])
-      ->orderBy('turma.nome')
+    $matriculas = Matricula::with([
+      'aluno',
+      'turma.turma_tipo'
+    ])
+      ->whereHas('turma', function ($q) {
+        $q->orderBy('nome');
+      })
       ->paginate(5);
+
+    $matriculas->setCollection($matriculas->groupBy(function ($data) {
+      return $data->turma_id;
+    }));
 
     return view('matriculas.index', [
       'matriculas' => $matriculas,
@@ -36,9 +47,13 @@ class MatriculasController extends Controller
     ]);
   }
 
-  public function store()
+  public function store(MatriculasStoreRequest $request, MatriculasActions $action)
   {
-    //
+    $validated = $request->validated();
+
+    $action->store($validated);
+
+    return redirect()->route('matriculas.index')->with('message', 'Matrícula adicionada com sucesso!');
   }
 
   public function view()
