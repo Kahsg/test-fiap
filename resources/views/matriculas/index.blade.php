@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        @foreach ($matriculas as $matricula)
+        @foreach ($matriculas as $turma_id => $matricula)
             <div class="row mt-2">
                 <div class="col-12">
                     <div class="card">
@@ -39,18 +39,18 @@
                             <div class="d-flex justify-content-between">
                                 <div class="p-2">
                                     <label class="list-label" for="">Turma:</label>
-                                    <h6>{{ $matricula->turma->nome }}</h6>
+                                    <h6>{{ $matricula[0]->turma->nome }}</h6>
                                 </div>
                                 <div class="p-2">
                                     <label class="list-label">Tipo:</label>
-                                    <h6>{{ $matricula->turma->turma_tipo->descricao}}</h6>
+                                    <h6>{{ $matricula[0]->turma->turma_tipo->descricao}}</h6>
                                 </div>
                                 <div class="p-2">
                                     <label class="list-label">Total de matriculas:</label>
-                                    <h6>{{ $matricula->total }}</h6>
+                                    <h6 class="text-center">{{ count($matricula) }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="javascript:void(0);" data-url="{{ route('matriculas.view', ['uuid' => $matricula->uuid ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
+                                    <a href="javascript:void(0);" data-url="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>
