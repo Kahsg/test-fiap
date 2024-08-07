@@ -52,8 +52,8 @@
                                 <div class="p-2 align-self-center">
                                     <label class="list-label">Cadastro:</label>
                                     <h6 class="text-center">
-                                        {{ $aluno->created_at->format('d/m/Y') }}<br>
-                                        <small>{{ $aluno->created_at->format('H:i:s') }}</small>
+                                        {{ $aluno->created_at->timezone('America/Sao_Paulo')->format('d/m/Y') }}<br>
+                                        <small>{{ $aluno->created_at->timezone('America/Sao_Paulo')->format('H:i:s') }}</small>
                                     </h6>
                                 </div>
                                 <div class="p-2 align-self-center">
