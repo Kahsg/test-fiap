@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Turmas;
 
+use App\Actions\Turmas\TurmasActions;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Turmas\TurmasStoreRequest;
 use App\Models\Turma;
 use App\Models\TurmaTipo;
 
@@ -11,7 +13,8 @@ class TurmasController extends Controller
 
   public function index()
   {
-    $turmas = Turma::orderBy('nome')
+    $turmas = Turma::with('turma_tipo')
+      ->orderBy('nome')
       ->paginate(5);
 
     return view('turmas.index', [
@@ -29,9 +32,13 @@ class TurmasController extends Controller
     ]);
   }
 
-  public function store()
+  public function store(TurmasStoreRequest $request, TurmasActions $action)
   {
-    //
+    $validated = $request->validated();
+
+    $action->store($validated);
+
+    return redirect()->route('turmas.index')->with('message', 'Turma adicionada com sucesso!');
   }
 
   public function edit()
