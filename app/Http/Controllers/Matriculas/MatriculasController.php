@@ -56,8 +56,14 @@ class MatriculasController extends Controller
     return redirect()->route('matriculas.index')->with('message', 'Matrícula adicionada com sucesso!');
   }
 
-  public function view()
+  public function view($turma)
   {
-    //
+    $matriculados = Matricula::with(['aluno', 'turma.turma_tipo'])
+      ->where('turma_id', $turma)
+      ->paginate(5);
+
+    return view('matriculas.view', [
+      'matriculados' => $matriculados,
+    ]);
   }
 }
