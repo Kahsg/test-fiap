@@ -28,5 +28,5 @@ Route::prefix('matriculas')->name('matriculas')->group(function () {
     Route::get('/', [MatriculasController::class, 'index'])->name('.index');
     Route::get('/new', [MatriculasController::class, 'create'])->name('.create');
     Route::post('/new', [MatriculasController::class, 'store'])->name('.store');
-    Route::get('/{uuid}', [MatriculasController::class, 'view'])->name('.view');
+    Route::get('/{turma}', [MatriculasController::class, 'view'])->name('.view');
 });
