@@ -41,9 +41,18 @@ class TurmasController extends Controller
     return redirect()->route('turmas.index')->with('message', 'Turma adicionada com sucesso!');
   }
 
-  public function edit()
+  public function edit($uuid)
   {
-    //
+    $turma = Turma::where('uuid', $uuid)
+      ->firstOrFail();
+
+    $tipos = TurmaTipo::orderBy('descricao')
+      ->get();
+
+    return view('turmas.edit', [
+      'turma' => $turma,
+      'tipos' => $tipos,
+    ]);
   }
 
   public function update()
