@@ -32,7 +32,7 @@ class AlunosController extends Controller
 
     $action->store($validated);
 
-    return redirect()->route('alunos.index');;
+    return redirect()->route('alunos.index')->with('message', 'Aluno adicionado com sucesso!');
   }
 
   public function edit($uuid)
@@ -51,7 +51,7 @@ class AlunosController extends Controller
 
     $action->update($validated, $uuid);
 
-    return redirect()->route('alunos.index');;
+    return redirect()->route('alunos.index')->with('message', 'Cadastro atualizado com sucesso!');
   }
 
   public function delete(AlunosActions $action, $uuid)
