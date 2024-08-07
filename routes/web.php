@@ -9,4 +9,5 @@ Route::get('/', function () {
 Route::prefix('alunos')->name('alunos')->group(function () {
     Route::get('/', [AlunosController::class, 'index'])->name('.index');
     Route::get('/new', [AlunosController::class, 'create'])->name('.create');
+    Route::post('/new', [AlunosController::class, 'store'])->name('.store');
 });
