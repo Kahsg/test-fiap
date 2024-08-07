@@ -20,7 +20,7 @@
             <div class="row" id="without-data">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body pb-0">
+                        <div class="card-body">
                             <div class="text-center">
                                 <i class="fas fa-times-circle fa-2x text-danger"></i>
                                 <div class="h5 mb-0 mt-2">Sem dados para apresentar.</div>
