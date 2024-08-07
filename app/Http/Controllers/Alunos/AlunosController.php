@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Alunos;
 
 use App\Actions\Alunos\AlunosActions;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Alunos\AlunosRequest;
+use App\Http\Requests\Alunos\AlunosStoreRequest;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
 
@@ -26,7 +26,7 @@ class AlunosController extends Controller
     return view('alunos.create', []);
   }
 
-  public function store(AlunosRequest $request, AlunosActions $action)
+  public function store(AlunosStoreRequest $request, AlunosActions $action)
   {
     $validated = $request->validated();
 
