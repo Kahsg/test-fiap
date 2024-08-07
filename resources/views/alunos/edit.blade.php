@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-group col-6 mt-2">
                                     <label for="nascimento" class="list-label">Data de nascimento:</label>
-                                    <input type="date" class="form-control" max="{{ now()->format('Y-m-d') }}" name="nascimento" value="{{ old('nascimento',$aluno->nascimento->format('Y-m-d')) }}" required>
+                                    <input type="date" class="form-control @error('nascimento') is-invalid @enderror" max="{{ now()->format('Y-m-d') }}" name="nascimento" value="{{ old('nascimento',$aluno->nascimento->format('Y-m-d')) }}" required>
                                     @error('nascimento')
                                         <div class="">
                                             <p class="text-danger">{{ $message }}</p>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group col-6 mt-2">
                                     <label for="usuario" class="list-label">Usuário:</label>
-                                    <input type="text" class="form-control text-lowercase" name="usuario" value="{{ old('usuario',$aluno->usuario) }}" placeholder="Ex.: jsilva" required>
+                                    <input type="text" class="form-control text-lowercase @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario',$aluno->usuario) }}" placeholder="Ex.: jsilva" required>
                                     @error('usuario')
                                         <div class="">
                                             <p class="text-danger">{{ $message }}</p>
