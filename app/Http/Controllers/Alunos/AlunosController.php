@@ -7,12 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Alunos\AlunosStoreRequest;
 use App\Http\Requests\Alunos\AlunosUpdateRequest;
 use App\Models\Aluno;
-use Illuminate\Http\Request;
 
 class AlunosController extends Controller
 {
 
-  public function index(Request $request)
+  public function index()
   {
     $alunos = Aluno::orderBy('nome')
       ->paginate(5);
@@ -53,5 +52,12 @@ class AlunosController extends Controller
     $action->update($validated, $uuid);
 
     return redirect()->route('alunos.index');;
+  }
+
+  public function delete(AlunosActions $action, $uuid)
+  {
+    $action->delete($uuid);
+
+    return redirect()->route('alunos.index')->with('message', 'Aluno excluído com sucesso!');
   }
 }

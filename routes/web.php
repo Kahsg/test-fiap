@@ -12,4 +12,5 @@ Route::prefix('alunos')->name('alunos')->group(function () {
     Route::post('/new', [AlunosController::class, 'store'])->name('.store');
     Route::get('/{uuid}', [AlunosController::class, 'edit'])->name('.edit');
     Route::post('/{uuid}', [AlunosController::class, 'update'])->name('.update');
+    Route::delete('/{uuid}', [AlunosController::class, 'delete'])->name('.delete');
 });

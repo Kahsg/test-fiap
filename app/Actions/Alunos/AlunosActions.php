@@ -47,4 +47,24 @@ class AlunosActions
 
         return true;
     }
+
+    public function delete($uuid)
+    {
+        try {
+            DB::beginTransaction();
+
+            $aluno = Aluno::where('uuid', $uuid)
+                ->firstOrFail();
+
+            $aluno->delete();
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            throw new Exception('Erro ao excluir aluno.' . $th, 422);
+        }
+
+        return true;
+    }
 }

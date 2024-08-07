@@ -36,6 +36,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <form id="form-delete" action="#" method="POST" style="display: none">
+                                @csrf
+                                @method('delete')
+                            </form>
                             <div class="d-flex justify-content-between">
                                 <div class="p-2">
                                     <label class="list-label" for="">Nome:</label>
@@ -58,6 +62,7 @@
                                 </div>
                                 <div class="p-2 align-self-center">
                                     <a href="{{ route('alunos.edit', ['uuid' => $aluno->uuid ]) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="javascript:void(0);" data-url="{{ route('alunos.delete', ['uuid' => $aluno->uuid ]) }}" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -72,4 +77,42 @@
         {{ $alunos->links('layouts.pagination') }}
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        $(document).on('click','.btn-delete', function () {
+            let url = $(this).attr('data-url');
+            $('#form-delete').attr('action', url);
+            Swal.fire({
+                title: 'Atenção!',
+                text: 'Deseja realmente excluir este aluno?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Confirmar',
+                cancelButtonText: 'Cancelar',
+                customClass: {
+                    confirmButton: 'btn btn-success mx-2',
+                    cancelButton: 'btn btn-danger mx-2'
+                },
+                reverseButtons: true,
+                buttonsStyling: !1
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#form-delete').submit();
+                }
+            });
+        });
+
+        var session = '{{ session("message") }}';
+
+        if (session != '') {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: session,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    </script>
 @endsection
