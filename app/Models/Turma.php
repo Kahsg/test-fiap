@@ -29,4 +29,9 @@ class Turma extends Model
     {
         return $this->hasOne(TurmaTipo::class, 'id', 'tipo');
     }
+
+    public function alunos()
+    {
+        return $this->hasMany(Matricula::class, 'turma_id', 'id');
+    }
 }
