@@ -7,17 +7,32 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Alunos\AlunosStoreRequest;
 use App\Http\Requests\Alunos\AlunosUpdateRequest;
 use App\Models\Aluno;
+use Illuminate\Http\Request;
 
 class AlunosController extends Controller
 {
 
-  public function index()
+  public function index(Request $request)
   {
-    $alunos = Aluno::orderBy('nome')
+    $search = $request->get('utm-search');
+
+    $alunos = Aluno::when(!empty($search), function ($q) use ($search) {
+      $searchArray = explode('/', $search);
+      $is_date = implode('-', array_reverse($searchArray));
+
+      $q->where(function ($a) use ($search, $is_date) {
+        $a->orWhere('nome', 'like', '%' . $search . '%');
+        $a->orWhere('usuario', 'like', '%' . $search . '%');
+        $a->orWhere('nascimento', 'like', '%' . $is_date . '%');
+        $a->orWhere('created_at', 'like', '%' . $is_date . '%');
+      });
+    })
+      ->orderBy('nome')
       ->paginate(5);
 
     return view('alunos.index', [
       'alunos' => $alunos,
+      'search' => $search
     ]);
   }
 

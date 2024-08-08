@@ -15,6 +15,15 @@
     </div>
 </div>
 <div class="row m-3 d-flex justify-content-center">
+    <div class="col-10 d-flex justify-content-center p-1">
+        <div class="col-8">
+            <input type="text" class="form-control search" name="search" value="{{ $search }}" placeholder="Buscar">
+        </div>
+        <div class="col-1 align-self-center p-2">
+            <a href="javascript:void(0);" type="button" class="btn-search"><i class="fas fa-search"></i></a>
+        </div>
+    </div>
+
     <div class="col-10">
         @if ($alunos->isEmpty())
             <div class="row" id="without-data">
@@ -101,6 +110,13 @@
                     $('#form-delete').submit();
                 }
             });
+        });
+
+        $(document).on('click','.btn-search', function () {
+            let search = $('.search').val();
+            let url = '{{route("alunos.index")}}' + '?utm-search=' + search;
+
+            $('a.btn-search').attr('href', url);
         });
 
         var session = '{{ session("message") }}';
