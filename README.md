@@ -8,6 +8,10 @@ A maneira mais simples de executá-la é utilizando Docker através da interface
 
 Se for executar a aplicação sem utilizar a interface Sail, ajuste as configurações do banco de dados no arquivo de configuração `.env` e utilize o arquivo `database/dump.sql` para criar as tabelas e dados iniciais de teste.
 
+> Utilize as seguintes credenciais para o usuário padrão da aplicação:
+**Email:** admin@email.com.br
+**Senha:** password
+
 Gere o arquivo de configuração `.env`:
 ```
 $ cp .env.exemple .env
