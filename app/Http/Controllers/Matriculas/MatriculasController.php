@@ -8,6 +8,7 @@ use App\Http\Requests\Matriculas\MatriculasStoreRequest;
 use App\Models\Aluno;
 use App\Models\Matricula;
 use App\Models\Turma;
+use Illuminate\Support\Facades\DB;
 
 class MatriculasController extends Controller
 {
@@ -16,16 +17,14 @@ class MatriculasController extends Controller
   {
     $matriculas = Matricula::with([
       'aluno',
-      'turma.turma_tipo'
+      'turma.turma_tipo',
+      'turma.alunos'
     ])
       ->whereHas('turma', function ($q) {
         $q->orderBy('nome');
       })
-      ->paginate(5);
-
-    $matriculas->setCollection($matriculas->groupBy(function ($data) {
-      return $data->turma_id;
-    }));
+      ->get()
+      ->keyBy('turma_id');
 
     return view('matriculas.index', [
       'matriculas' => $matriculas,
