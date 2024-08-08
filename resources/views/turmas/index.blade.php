@@ -54,8 +54,8 @@
                                     <h6>{{ strlen($turma->descricao) >= 30 ? substr($turma->descricao, 0, strrpos(substr(stripcslashes($turma->descricao), 0, 30), ' ')) . '...' : $turma->descricao }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="{{ route('turmas.edit', ['uuid' => $turma->uuid ]) }}"><i class="fas fa-edit"></i></a>
-                                    <a href="javascript:void(0);" data-url="{{ route('turmas.delete', ['uuid' => $turma->uuid ]) }}" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{ route('turmas.edit', ['uuid' => $turma->uuid ]) }}" data-toggle="tooltip" title="Editar"><i class="fas fa-edit"></i></a>
+                                    <a href="javascript:void(0);" data-url="{{ route('turmas.delete', ['uuid' => $turma->uuid ]) }}" class="btn-delete" data-toggle="tooltip" title="Excluir"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                             </div>
                         </div>

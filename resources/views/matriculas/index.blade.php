@@ -50,7 +50,7 @@
                                     <h6>{{ count($matricula->turma->alunos) }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view" data-toggle="tooltip" title="Ver matrículados"><i class="fas fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>

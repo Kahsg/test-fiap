@@ -70,8 +70,8 @@
                                     </h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="{{ route('alunos.edit', ['uuid' => $aluno->uuid ]) }}"><i class="fas fa-edit"></i></a>
-                                    <a href="javascript:void(0);" data-url="{{ route('alunos.delete', ['uuid' => $aluno->uuid ]) }}" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{ route('alunos.edit', ['uuid' => $aluno->uuid ]) }}" data-toggle="tooltip" title="Editar"><i class="fas fa-edit"></i></a>
+                                    <a href="javascript:void(0);" data-url="{{ route('alunos.delete', ['uuid' => $aluno->uuid ]) }}" class="btn-delete" data-toggle="tooltip" title="Excluir"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                             </div>
                         </div>
