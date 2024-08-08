@@ -14,17 +14,43 @@
             </li>
         @endif
 
-        @foreach ($elements as $element)
-            @if (is_array($element))
-                @foreach ($element as $page => $url)
-                    @if ($page == $paginator->currentPage())
-                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">{{ $page }}</a></li>
-                    @else
-                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
-                    @endif
-                @endforeach
+        <?php
+            // Exibe 3 páginas antes e depois da página selecionada.
+            $start = $paginator->currentPage() - 2;
+            $end = $paginator->currentPage() + 2;
+            if ($start < 1) {
+                // Redefine início para 1
+                $start = 1;
+                $end += 1;
+            }
+            if ($end >= $paginator->lastPage()) {
+                // Redefine fim para a última página
+                $end = $paginator->lastPage();
+            }
+        ?>
+        @if ($start > 1)
+            <li class="page-item">
+                <a class="page-link" href="{{ $paginator->url(1) }}">{{ 1 }}</a>
+            </li>
+            @if($paginator->currentPage() != 4)
+                <li class="page-item disabled" aria-disabled="true"><span class="page-link">...</span></li>
             @endif
-        @endforeach
+        @endif
+
+        @for ($i = $start; $i <= $end; $i++)
+            <li class="page-item {{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
+                <a class="page-link" href="{{ $paginator->url($i) }}">{{$i}}</a>
+            </li>
+        @endfor
+
+        @if ($end < $paginator->lastPage())
+            @if ($paginator->currentPage() + 3 != $paginator->lastPage())
+                <li class="page-item disabled" aria-disabled="true"><span class="page-link">...</span></li>
+            @endif
+            <li class="page-item">
+                <a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}">{{$paginator->lastPage()}}</a>
+            </li>
+        @endif
 
         @if ($paginator->hasMorePages())
             <li class="page-item">
