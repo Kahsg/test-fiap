@@ -11,7 +11,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                this.closest('form').submit();"><i class="fas fa-power-off"></i></a>
+                this.closest('form').submit();" data-toggle="tooltip" data-placement="bottom" title="Sair"><i class="fas fa-power-off"></i></a>
             </form>
         </div>
     </div>
