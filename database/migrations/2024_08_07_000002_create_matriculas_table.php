@@ -26,7 +26,7 @@ return new class extends Migration
                 ->index('aluno_id_foreign');
             $table->foreign('aluno_id')
                 ->references('id')
-                ->on('turma_tipos');
+                ->on('alunos');
             $table->softDeletes();
             $table->timestamps();
         });
