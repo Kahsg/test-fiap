@@ -29,7 +29,7 @@
                                     required>
                                         <option></option>
                                         @foreach ($turmas as $turma)
-                                            <option value="{{ $turma->uuid }}" {{ old('turma_id') == $turma->id ? 'selected' : '' }}>{{ $turma->nome . ' - ' . $turma->turma_tipo->descricao }}</option>
+                                            <option value="{{ $turma->uuid }}" {{ old('turma_id') == $turma->uuid ? 'selected' : '' }}>{{ $turma->nome . ' - ' . $turma->turma_tipo->descricao }}</option>
                                         @endforeach
                                     </select>
                                     @error('turma_id')
@@ -38,13 +38,13 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group col-6 mt-2">
+                                <div class="form-group col-12 mt-2">
                                     <label for="aluno_id" class="list-label">Informe o aluno:</label>
                                     <select class="select2 form-control @error('aluno_id') is-invalid @enderror" name="aluno_id" data-placeholder="Selecione"
                                     required>
                                         <option></option>
                                         @foreach ($alunos as $aluno)
-                                            <option value="{{ $aluno->uuid }}" {{ old('aluno_id') == $aluno->id ? 'selected' : '' }}>{{ $aluno->nome }}</option>
+                                            <option value="{{ $aluno->uuid }}" {{ old('aluno_id') == $aluno->uuid ? 'selected' : '' }}>{{ $aluno->nome }}</option>
                                         @endforeach
                                     </select>
                                     @error('aluno_id')

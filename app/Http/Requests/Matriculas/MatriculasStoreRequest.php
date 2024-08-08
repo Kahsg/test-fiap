@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Matriculas;
 
+use App\Models\Matricula;
 use Illuminate\Foundation\Http\FormRequest;
+use Closure;
 
 class MatriculasStoreRequest extends FormRequest
 {
@@ -23,16 +25,30 @@ class MatriculasStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        $matricula = Matricula::with(['aluno', 'turma'])
+            ->whereHas('aluno', function ($q) {
+                $q->where('uuid', $this->aluno_id);
+            })
+            ->whereHas('turma', function ($q) {
+                $q->where('uuid', $this->turma_id);
+            })
+            ->first();
+
         return [
             'turma_id' => [
                 'required',
                 'string',
-                'exists:turmas,uuid'
+                'exists:turmas,uuid',
             ],
             'aluno_id' => [
                 'required',
                 'string',
-                'exists:alunos,uuid'
+                'exists:alunos,uuid',
+                function (string $attribute, mixed $value, Closure $fail) use ($matricula) {
+                    if (!empty($matricula)) {
+                        $fail("Já existe esta matricula.");
+                    }
+                }
             ],
         ];
     }
