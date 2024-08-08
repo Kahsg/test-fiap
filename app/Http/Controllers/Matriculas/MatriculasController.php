@@ -15,19 +15,16 @@ class MatriculasController extends Controller
 
   public function index()
   {
-    $matriculas = Matricula::with([
-      'aluno',
-      'turma.turma_tipo',
-      'turma.alunos'
+    $turmas = Turma::with([
+      'alunos',
+      'turma_tipo',
     ])
-      ->whereHas('turma', function ($q) {
-        $q->orderBy('nome');
-      })
-      ->get()
-      ->keyBy('turma_id');
+      ->orderBy('nome')
+      ->withCount('alunos')
+      ->paginate(5);
 
     return view('matriculas.index', [
-      'matriculas' => $matriculas,
+      'turmas' => $turmas,
     ]);
   }
 

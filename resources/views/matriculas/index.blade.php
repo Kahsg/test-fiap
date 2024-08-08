@@ -16,7 +16,7 @@
 </div>
 <div class="row m-3 d-flex justify-content-center">
     <div class="col-10">
-        @if ($matriculas->isEmpty())
+        @if ($turmas->isEmpty())
             <div class="row" id="without-data">
                 <div class="col-12">
                     <div class="card">
@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        @foreach ($matriculas as $turma_id => $matricula)
+        @foreach ($turmas as $turma)
             <div class="row mt-2">
                 <div class="col-12">
                     <div class="card">
@@ -39,18 +39,18 @@
                             <div class="d-flex justify-content-between">
                                 <div class="p-2 col">
                                     <label class="list-label" for="">Turma:</label>
-                                    <h6>{{ $matricula->turma->nome }}</h6>
+                                    <h6>{{ $turma->nome }}</h6>
                                 </div>
                                 <div class="p-2 col">
                                     <label class="list-label">Tipo:</label>
-                                    <h6>{{ $matricula->turma->turma_tipo->descricao}}</h6>
+                                    <h6>{{ $turma->turma_tipo->descricao}}</h6>
                                 </div>
                                 <div class="p-2 col text-center">
                                     <label class="list-label">Total de matriculas:</label>
-                                    <h6>{{ count($matricula->turma->alunos) }}</h6>
+                                    <h6>{{ $turma->alunos_count }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
-                                    <a href="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view" data-toggle="tooltip" title="Ver matrículados"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('matriculas.view', ['turma' => $turma->id ]) }}" class="btn-view" data-toggle="tooltip" title="Ver matrículados"><i class="fas fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +58,11 @@
                 </div>
             </div>
         @endforeach
+    </div>
+</div>
+<div class="row" id="pagination">
+    <div class="d-flex justify-content-center mt-2 text-center">
+        {{ $turmas->links('layouts.pagination') }}
     </div>
 </div>
 @endsection
