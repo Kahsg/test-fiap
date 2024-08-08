@@ -38,15 +38,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label" for="">Nome:</label>
                                     <h6>{{ $matricula->aluno->nome }}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Data de nascimento:</label>
                                     <h6>{{ $matricula->aluno->nascimento->format('d/m/Y')}}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Usuário:</label>
                                     <h6>{{ $matricula->aluno->usuario }}</h6>
                                 </div>

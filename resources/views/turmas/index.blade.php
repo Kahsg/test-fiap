@@ -41,17 +41,17 @@
                                 @method('delete')
                             </form>
                             <div class="d-flex justify-content-between">
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label" for="">Nome:</label>
                                     <h6>{{ $turma->nome }}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Tipo:</label>
                                     <h6>{{ $turma->turma_tipo->descricao }}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Descrição:</label>
-                                    <h6>{{ $turma->descricao }}</h6>
+                                    <h6>{{ strlen($turma->descricao) >= 30 ? substr($turma->descricao, 0, strrpos(substr(stripcslashes($turma->descricao), 0, 30), ' ')) . '...' : $turma->descricao }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
                                     <a href="{{ route('turmas.edit', ['uuid' => $turma->uuid ]) }}"><i class="fas fa-edit"></i></a>

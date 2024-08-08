@@ -37,17 +37,17 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label" for="">Turma:</label>
                                     <h6>{{ $matricula->turma->nome }}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Tipo:</label>
                                     <h6>{{ $matricula->turma->turma_tipo->descricao}}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col text-center">
                                     <label class="list-label">Total de matriculas:</label>
-                                    <h6 class="text-center">{{ count($matricula->turma->alunos) }}</h6>
+                                    <h6>{{ count($matricula->turma->alunos) }}</h6>
                                 </div>
                                 <div class="p-2 align-self-center">
                                     <a href="{{ route('matriculas.view', ['turma' => $turma_id ]) }}" class="btn-view"><i class="fas fa-eye"></i></a>

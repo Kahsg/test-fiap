@@ -50,21 +50,21 @@
                                 @method('delete')
                             </form>
                             <div class="d-flex justify-content-between">
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label" for="">Nome:</label>
                                     <h6>{{ $aluno->nome }}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Data de nascimento:</label>
                                     <h6>{{ $aluno->nascimento->format('d/m/Y')}}</h6>
                                 </div>
-                                <div class="p-2">
+                                <div class="p-2 col">
                                     <label class="list-label">Usuário:</label>
                                     <h6>{{ $aluno->usuario }}</h6>
                                 </div>
-                                <div class="p-2 align-self-center">
+                                <div class="p-2 col align-self-center">
                                     <label class="list-label">Cadastro:</label>
-                                    <h6 class="text-center">
+                                    <h6>
                                         {{ $aluno->created_at->timezone('America/Sao_Paulo')->format('d/m/Y') }}<br>
                                         <small>{{ $aluno->created_at->timezone('America/Sao_Paulo')->format('H:i:s') }}</small>
                                     </h6>
