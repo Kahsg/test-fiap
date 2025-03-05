@@ -44,6 +44,13 @@
                                             @enderror
                                         </div>
 
+                                        <div class="g-recaptcha" data-sitekey="{{ config('recaptcha.site_key') }}"></div>
+                                        @error('g-recaptcha')
+                                            <div class="">
+                                                <p class="text-danger">{{ $message }}</p>
+                                            </div>
+                                        @enderror
+
                                         <div class="mt-4 text-center">
                                             <button class="btn btn-outline-standard btn-rounded w-md waves-effect waves-light" type="submit">Entrar</button>
                                         </div>

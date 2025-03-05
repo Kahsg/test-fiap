@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -13,6 +14,26 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request): RedirectResponse
     {
+        $recaptcha = $request->input('g-recaptcha-response');
+
+        if (empty($recaptcha)) {
+            return back()->withErrors([
+                'g-recaptcha' => 'Para prosseguir é preciso preencher o recaptcha.',
+            ])->onlyInput('g-recaptcha');
+        }
+
+        // Validação Recaptcha
+        $apiResponse = Http::get('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('recaptcha.secret_key'),
+            'response' => $recaptcha
+        ]);
+
+        if (! $apiResponse->json()['success']) {
+            return back()->withErrors([
+                'g-recaptcha' => 'Recaptcha inválido.',
+            ])->onlyInput('g-recaptcha');
+        }
+
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],

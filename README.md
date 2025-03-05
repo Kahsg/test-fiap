@@ -42,3 +42,14 @@ $ ./vendor/bin/sail npm run build
 ```
 
 Acesse [http://localhost](http://localhost) para visualizar a aplicação.
+
+## RECAPTCHA
+Para utilizar o recurso recaptcha, é preciso realizar o registro da aplicação e obter suas chaves, que deverão ser inseridas no arquivo `.env`.
+
+Para configurar o recaptcha no localhost, acesse `https://www.google.com/recaptcha/admin/create`, preencha as informações solicitadas, selecionando no campo `tipo de recaptcha` a opção `Desafio (V2)` e em `Domínios` digite apenas `localhost` e aperte enter.
+
+```
+Se você estiver usando 127.0.0.1 em vez de localhost, adicione 127.0.0.1 também.
+```
+
+Após finalizar o registro, insira as chaves fornecidas no arquivo `.env`.
